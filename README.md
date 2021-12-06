@@ -1,1 +1,135 @@
-# sql5
+mysql> SELECT firstname, lastname, role, name FROM player
+    -> JOIN wizard ON wizard.id=player.wizard_id
+    -> JOIN team ON team.id=player.team_id
+    -> ORDER BY name, role, lastname, firstname;
++-------------+-----------------+--------+------------+
+| firstname   | lastname        | role   | name       |
++-------------+-----------------+--------+------------+
+| Sirius      | Black           | beater | Gryffindor |
+| Lavender    | Brown           | beater | Gryffindor |
+| Seamus      | Finnigan        | beater | Gryffindor |
+| Rubeus      | Hagrid          | beater | Gryffindor |
+| Alice       | Longbottom      | beater | Gryffindor |
+| Minerva     | McGonagall      | beater | Gryffindor |
+| Harry       | Potter          | beater | Gryffindor |
+| James       | Potter          | beater | Gryffindor |
+| Dean        | Thomas          | beater | Gryffindor |
+| Arthur      | Weasley         | beater | Gryffindor |
+| Percy       | Weasley         | beater | Gryffindor |
+| Katie       | Bell            | chaser | Gryffindor |
+| Albus       | Dumbledore      | chaser | Gryffindor |
+| Hermione    | Granger         | chaser | Gryffindor |
+| Lily        | J.              | chaser | Gryffindor |
+| Lee         | Jordan          | chaser | Gryffindor |
+| Augusta     | Longbottom      | chaser | Gryffindor |
+| Frank       | Longbottom      | chaser | Gryffindor |
+| Neville     | Longbottom      | chaser | Gryffindor |
+| Peter       | Pettigrew       | chaser | Gryffindor |
+| Alicia      | Spinnet         | chaser | Gryffindor |
+| George      | Weasley         | chaser | Gryffindor |
+| Oliver      | Wood            | chaser | Gryffindor |
+| Cadogan     |                 | keeper | Gryffindor |
+| Dennis      | Creevey         | keeper | Gryffindor |
+| Nicholas    | de              | keeper | Gryffindor |
+| Aberforth   | Dumbledore      | keeper | Gryffindor |
+| Angelina    | Johnson         | keeper | Gryffindor |
+| Ginevra     | Weasley         | keeper | Gryffindor |
+| Cuthbert    | Binns           | seeker | Gryffindor |
+| Colin       | Creevey         | seeker | Gryffindor |
+| Godric      | Gryffindor      | seeker | Gryffindor |
+| Romilda     | Vane            | seeker | Gryffindor |
+| Fred        | Weasley         | seeker | Gryffindor |
+| Ronald      | Weasley         | seeker | Gryffindor |
+| William     | Weasley         | seeker | Gryffindor |
+| Hannah      | Abbott          | beater | Hufflepuff |
+| Justin      | Finch-Fletchley | beater | Hufflepuff |
+| Fat         | Friar           | beater | Hufflepuff |
+| Hepzibah    | Smith           | beater | Hufflepuff |
+| Pomona      | Sprout          | beater | Hufflepuff |
+| Nymphadora  | Tonks           | beater | Hufflepuff |
+| Amelia      | Bones           | chaser | Hufflepuff |
+| Newton      | Scamander       | chaser | Hufflepuff |
+| Susan       | Bones           | keeper | Hufflepuff |
+| Cedric      | Diggory         | keeper | Hufflepuff |
+| Zacharias   | Smith           | keeper | Hufflepuff |
+| Helga       | Hufflepuff      | seeker | Hufflepuff |
+| Penelope    | Clearwater      | beater | Ravenclaw  |
+| Quirinus    | Quirrell        | beater | Ravenclaw  |
+| Helena      | Ravenclaw       | beater | Ravenclaw  |
+| Myrtle      | Warren          | beater | Ravenclaw  |
+| Cho         | Chang           | chaser | Ravenclaw  |
+| Marietta    | Edgecombe       | chaser | Ravenclaw  |
+| Filius      | Flitwick        | chaser | Ravenclaw  |
+| Anthony     | Goldstein       | chaser | Ravenclaw  |
+| Gilderoy    | Lockhart        | chaser | Ravenclaw  |
+| Luna        | Lovegood        | chaser | Ravenclaw  |
+| Xenophilius | Lovegood        | chaser | Ravenclaw  |
+| Garrick     | Ollivander      | chaser | Ravenclaw  |
+| Michael     | Corner          | seeker | Ravenclaw  |
+| Rowena      | Ravenclaw       | seeker | Ravenclaw  |
+| Sybill      | Trelawney       | seeker | Ravenclaw  |
+| Millicent   | Bulstrode       | beater | Slytherin  |
+| Vincent     | Crabbe          | beater | Slytherin  |
+| Marcus      | Flint           | beater | Slytherin  |
+| Pansy       | Parkinson       | beater | Slytherin  |
+| Severus     | Snape           | beater | Slytherin  |
+| Blaise      | Zabini          | beater | Slytherin  |
+| Bloody      | Baron           | chaser | Slytherin  |
+| Bellatrix   | Lestrange       | chaser | Slytherin  |
+| Rodolphus   | Lestrange       | chaser | Slytherin  |
+| Draco       | Malfoy          | chaser | Slytherin  |
+| Lucius      | Malfoy          | chaser | Slytherin  |
+| Phineas     | Nigellus        | chaser | Slytherin  |
+| Theodore    | Nott            | chaser | Slytherin  |
+| Tom         | Riddle          | chaser | Slytherin  |
+| Andromeda   | Tonks           | chaser | Slytherin  |
+| Regulus     | Black           | keeper | Slytherin  |
+| Gregory     | Goyle           | seeker | Slytherin  |
+| Rabastan    | Lestrange       | seeker | Slytherin  |
+| Narcissa    | Malfoy          | seeker | Slytherin  |
+| Salazar     | Slytherin       | seeker | Slytherin  |
+| Dolores     | Umbridge        | seeker | Slytherin  |
++-------------+-----------------+--------+------------+
+84 rows in set (0.00 sec)
+
+mysql> SELECT firstname, lastname FROM player
+    -> JOIN wizard ON wizard.id=player.wizard_id
+    -> WHERE role = 'seeker'
+    -> ORDER BY lastname, firstname;
++-----------+------------+
+| firstname | lastname   |
++-----------+------------+
+| Cuthbert  | Binns      |
+| Michael   | Corner     |
+| Colin     | Creevey    |
+| Gregory   | Goyle      |
+| Godric    | Gryffindor |
+| Helga     | Hufflepuff |
+| Rabastan  | Lestrange  |
+| Narcissa  | Malfoy     |
+| Rowena    | Ravenclaw  |
+| Salazar   | Slytherin  |
+| Sybill    | Trelawney  |
+| Dolores   | Umbridge   |
+| Romilda   | Vane       |
+| Fred      | Weasley    |
+| Ronald    | Weasley    |
+| William   | Weasley    |
++-----------+------------+
+16 rows in set (0.00 sec)
+
+mysql> SELECT * FROM wizard
+    -> WHERE NOT EXISTS (SELECT * FROM player WHERE wizard_id = wizard.id);
++----+-----------+----------+
+| id | firstname | lastname |
++----+-----------+----------+
+|  9 | Terry     | Boot     |
+| 15 | Crabbe    |          |
+| 45 | Remus     | Lupin    |
+| 53 | Padma     | Patil    |
+| 54 | Parvati   | Patil    |
+| 63 | Demelza   | Robins   |
+| 65 | Horace    | Slughorn |
+| 80 | Charles   | Weasley  |
+| 84 | Molly     | Weasley  |
++----+-----------+----------+
