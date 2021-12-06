@@ -118,18 +118,18 @@ mysql> SELECT firstname, lastname FROM player
 +-----------+------------+
 16 rows in set (0.00 sec)
 
-mysql> SELECT * FROM wizard
-    -> WHERE NOT EXISTS (SELECT * FROM player WHERE wizard_id = wizard.id);
-+----+-----------+----------+
-| id | firstname | lastname |
-+----+-----------+----------+
-|  9 | Terry     | Boot     |
-| 15 | Crabbe    |          |
-| 45 | Remus     | Lupin    |
-| 53 | Padma     | Patil    |
-| 54 | Parvati   | Patil    |
-| 63 | Demelza   | Robins   |
-| 65 | Horace    | Slughorn |
-| 80 | Charles   | Weasley  |
-| 84 | Molly     | Weasley  |
-+----+-----------+----------+
+mysql> SELECT firstname, lastname FROM wizard LEFT JOIN player on player.wizard
+_id = wizard.id WHERE role IS NULL;
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| Terry     | Boot     |
+| Crabbe    |          |
+| Remus     | Lupin    |
+| Padma     | Patil    |
+| Parvati   | Patil    |
+| Demelza   | Robins   |
+| Horace    | Slughorn |
+| Charles   | Weasley  |
+| Molly     | Weasley  |
++-----------+----------+
